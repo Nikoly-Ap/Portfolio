@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seja bem-vindo</title>
+  <link rel="stylesheet" href="./SRC/styles/header.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+
+  <div class="geral">
+    <img class="sky" src="/clouds.png" alt="">
+    <img class="sky2" src="/clouds.png" alt="">
+
+    <!-- CONTEÚDO INICIAL AGRUPADO -->
+    <div class="textInicial">
+      <h1 id="tituloDigitado" class="fade"></h1>
+
+      <h2 id="subtitulo" class="fade hidden">Qual o seu nome?</h2>
+      <input type="text" id="nomeUsuario" class="fade hidden" placeholder="Digite seu nome" />
+      <br>
+      <button onclick="saudarUsuario()" class="fade hidden">Enviar</button>
+    </div>
+ </div>
+    <div class="aprt2">
+    <p id="mensagem" class="fade hidden"></p>
+   
+  <div class="apresentacoes">
+  <div id="Apresentação" class="fade hidden" >
+    <a href="https://nikoly-ap.github.io/Site_Instituto_Florescer/" target="_blank">
+    <img class="foto" src="/file_00000000cbd862308996924928933ccd.png" alt="Foto de Nikoly">
+  </a>
+    <div class="areatext">
+    <h1>Meu nome é Nikoly!</h1> <br>
+    <p></p>E sou uma desenvolvedora de Software! <br>
+    Sempre fui muito apaixonada por criar coisas, e programação me encantou desde o inicio. <br>
+    Este é meu portifólio, espero que goste, e me coloco a disposição para contato!</p>
+    <br>
+    <p>Estes são alguns dos meus projetos mais recentes:</p> 
+    </div>
+  </div>
+  <div id="Apresentação2" class="fade hidden" >
+    <div class="titleApresenta">
+         <div class="text">
+   <h1>Instituto Florescer</h1>
+  
+     <p>Fiz o site para está ONG que é focada em auxiliar pessoas com câncer a obter acesso facilitado através do SUS.</p>
+     </div>
+   <div class="imgInstituto">
+   <img class="instituto" src="/Captura de tela 2025-06-26 232027.png" alt="">
+   </div>
+   
+   <div class="titleApresenta">
+    <div class="text">
+   <h1>Projeto Transforme-se</h1>
+  
+     <p>Um projeto fornecido pelo Serasa em parceria com a ONG Gerando Falcões. <br>
+      O propósito era criar um site para uma instituição de <br>
+      Eu e minha equipe fizemos a parte da Biblioteca, tendo funcionalidades como empréstimo de livro, filtros customizados, data de devolução calculada automaticamente, comentários e avaliações do usuário.</p>
+   </div>
+      <div class="imgInstituto">
+   <img class="instituto" src="/Captura de tela 2025-05-06 102239.png" alt="">
+   </div>
+  </div>
+  </div>
+  </div>
+
+  <script>
+    const texto = "SEJA BEM-VINDO";
+    const titulo = document.getElementById("tituloDigitado");
+    const subtitulo = document.getElementById("subtitulo");
+    const input = document.getElementById("nomeUsuario");
+    const botao = document.querySelector("button");
+    const mensagem = document.getElementById("mensagem");
+    const conteudoInicial = document.querySelector(".textInicial");
+
+    let i = 0;
+
+    function digitar() {
+      if (i < texto.length) {
+        titulo.innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(digitar, 100);
+      } else {
+        // Mostrar os elementos aos poucos
+        setTimeout(() => {
+          subtitulo.classList.remove("hidden");
+          subtitulo.classList.add("show");
+        }, 400);
+        setTimeout(() => {
+          input.classList.remove("hidden");
+          input.classList.add("show");
+        }, 800);
+        setTimeout(() => {
+          botao.classList.remove("hidden");
+          botao.classList.add("show");
+        }, 1200);
+      }
+    }
+
+    function saudarUsuario() {
+      const nome = input.value;
+
+      // Esconde todo o conteúdo inicial
+      conteudoInicial.style.display = "none";
+
+      
+      mensagem.textContent = `Olá, ${nome}! Seja bem-vindo(a)!`;
+      mensagem.classList.remove("hidden");
+      mensagem.classList.add("show");
+        setTimeout(() => {
+        document.getElementById("Apresentação").classList.remove("hidden");
+        document.getElementById("Apresentação").classList.add("show");
+          }, 1000);
+
+  setTimeout(() => {
+    document.getElementById("Apresentação2").classList.remove("hidden");
+    document.getElementById("Apresentação2").classList.add("show");
+  }, 2000);
+}
+    
+
+    // Inicia a digitação após o carregamento
+    window.onload = function () {
+      titulo.classList.add("show");
+      digitar();
+    };
+  </script>
+</body>
+</html>
